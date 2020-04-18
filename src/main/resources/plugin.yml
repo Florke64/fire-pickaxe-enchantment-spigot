@@ -1,0 +1,9 @@
+name: FirePickaxeEnchantment
+version: ${project.version}
+main: win.flrque.firepickaxe.Main
+api-version: 1.13
+prefix: FirePick
+load: STARTUP
+authors: [FlrQue]
+description: Adds custom enchantment for pickaxe which allows you to dig resources from ore blocks which require smelting in furnace.
+website: https://www.flrque.win/
