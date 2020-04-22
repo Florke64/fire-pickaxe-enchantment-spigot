@@ -11,13 +11,17 @@ import java.util.Collection;
 
 public class HotEdgeEnchantment extends Enchantment {
 
+    private final String nameKey;
+
     private final Collection<Enchantment> conflictingEnchantments = new ArrayList<Enchantment>();
 
-    public HotEdgeEnchantment() {
-        super(new NamespacedKey(Main.getPlugin(Main.class), "hot_edge"));
+    public HotEdgeEnchantment(String nameKey) {
+        super(new NamespacedKey(Main.getPlugin(Main.class), nameKey));
+
+        this.nameKey = nameKey;
 
         conflictingEnchantments.add(Enchantment.SILK_TOUCH);
-        conflictingEnchantments.add(Enchantment.LOOT_BONUS_BLOCKS);
+//        conflictingEnchantments.add(Enchantment.LOOT_BONUS_BLOCKS);
     }
 
     /**
@@ -38,7 +42,7 @@ public class HotEdgeEnchantment extends Enchantment {
      */
     @Override
     public int getMaxLevel() {
-        return 2;
+        return 1;
     }
 
     /**
