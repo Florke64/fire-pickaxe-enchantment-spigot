@@ -57,7 +57,9 @@ public class HotEdgeListener implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        //TODO: add isCancelled check
+        if(event.isCancelled())
+            return;
+
         Player player = event.getPlayer();
         if(player == null)
             return;
