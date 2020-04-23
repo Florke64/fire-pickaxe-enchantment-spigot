@@ -28,9 +28,16 @@ public class EnchantingTableListener implements Listener {
 
         if(luck <= plugin.getEnchantmentChance()) {
             int enchantmentNo = random.nextInt(plugin.getCustomEnchantments().size());
-            applyCustomEnchantment(plugin.getCustomEnchantments().get(enchantmentNo), event.getItem());
-        }
+            Enchantment customEnchant = plugin.getCustomEnchantments().get(enchantmentNo);
 
+            for(Enchantment conflict : event.getEnchantsToAdd().keySet()) {
+                if (customEnchant.conflictsWith(conflict)) {
+                    return;
+                }
+            }
+
+            applyCustomEnchantment(customEnchant, event.getItem());
+        }
     }
 
     public void applyCustomEnchantment(Enchantment enchantment, ItemStack item) {
