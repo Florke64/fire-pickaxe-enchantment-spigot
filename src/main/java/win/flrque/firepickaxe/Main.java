@@ -3,8 +3,8 @@ package win.flrque.firepickaxe;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.plugin.java.JavaPlugin;
 import win.flrque.firepickaxe.enchantments.HotEdgeEnchantment;
+import win.flrque.firepickaxe.listeners.EnchantingTableListener;
 import win.flrque.firepickaxe.listeners.HotEdgeListener;
-import win.flrque.firepickaxe.listeners.TestItemGiver;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new HotEdgeListener(), this);
-        getServer().getPluginManager().registerEvents(new TestItemGiver(), this);
+        getServer().getPluginManager().registerEvents(new EnchantingTableListener(), this);
 
         customEnchantments.put("hot_edge", new HotEdgeEnchantment("hot_edge"));
 
