@@ -1,6 +1,7 @@
 package win.flrque.firepickaxe.listeners;
 
 import org.bukkit.ChatColor;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,13 +26,18 @@ public class EnchantingTableListener implements Listener {
         Random random = new Random();
         int luck = random.nextInt(100);
 
-        if(luck <= 90) {
-            applyCustomEnchantment(event.getItem());
+        if(luck <= plugin.getEnchantmentChance()) {
+            int enchantmentNo = random.nextInt(plugin.getCustomEnchantments().size());
+            applyCustomEnchantment(plugin.getCustomEnchantments().get(enchantmentNo), event.getItem());
         }
 
     }
 
-    public void applyCustomEnchantment(ItemStack item) {
+    public void applyCustomEnchantment(Enchantment enchantment, ItemStack item) {
+        applyCustomEnchantment(enchantment, item, enchantment.getMaxLevel());
+    }
+
+    public void applyCustomEnchantment(Enchantment enchantment, ItemStack item, int level) {
         ItemMeta meta = item.getItemMeta();
 
         List<String> lore = new ArrayList<String>();
@@ -39,10 +45,10 @@ public class EnchantingTableListener implements Listener {
         if(meta.hasLore())
             lore.addAll(meta.getLore());
 
-        lore.add(ChatColor.GRAY + plugin.getCustomEnchantment("hot_edge").getName());
+        lore.add(ChatColor.GRAY + enchantment.getName());
         meta.setLore(lore);
 
         item.setItemMeta(meta);
-        item.addUnsafeEnchantment(plugin.getCustomEnchantment("hot_edge"), 1);
+        item.addUnsafeEnchantment(enchantment, level);
     }
 }

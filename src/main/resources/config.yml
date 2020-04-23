@@ -1,0 +1,7 @@
+# 100 - Every time; 0 - Never
+# !!! Only integer values !!!
+custom_enchantment_chance: 50
+
+# Available options are: 'blasting' and 'all'
+# default: 'blasting'
+check_for_recipe_type: 'blasting'

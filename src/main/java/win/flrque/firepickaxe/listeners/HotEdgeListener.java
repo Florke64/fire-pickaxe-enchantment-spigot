@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.BlastingRecipe;
+import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import win.flrque.firepickaxe.Main;
@@ -48,10 +49,13 @@ public class HotEdgeListener implements Listener {
         Iterator<Recipe> recipeIterator = Bukkit.recipeIterator();
         while (recipeIterator.hasNext()) {
             Recipe recipe = recipeIterator.next();
-            if(!(recipe instanceof BlastingRecipe))
+            if(!(recipe instanceof FurnaceRecipe))
                 continue;
 
-            if(((BlastingRecipe) recipe).getInput().isSimilar(blockItemStack)) {
+            if(plugin.getScanRecipeType() == 0 && !(recipe instanceof BlastingRecipe))
+                continue;
+
+            if(((FurnaceRecipe) recipe).getInput().isSimilar(blockItemStack)) {
                 brokenBlock.getDrops().clear();
                 event.setDropItems(false);
 
