@@ -46,7 +46,7 @@ public final class Main extends JavaPlugin {
         enchantmentChance = getConfig().getInt("custom_enchantment_chance", 1);
         enchantmentChance = enchantmentChance > 100? 100 : enchantmentChance < 0 ? 1 : enchantmentChance;
 
-        scanRecipeType = getConfig().getString("check_for_recipe_type", "blasting") == "blasting" ? 0 : 1;
+        scanRecipeType = getConfig().getString("check_for_recipe_type", "blasting").equalsIgnoreCase("blasting") ? 0 : 1;
         scanRecipeType = scanRecipeType > 1? 1 : scanRecipeType < 0 ? 0 : scanRecipeType;
     }
 
