@@ -8,6 +8,7 @@ import win.flrque.firepickaxe.listeners.EnchantingTableListener;
 import win.flrque.firepickaxe.listeners.HotEdgeListener;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,7 +86,10 @@ public final class Main extends JavaPlugin {
     }
 
     public List<Enchantment> getCustomEnchantments() {
-        return (List<Enchantment>) customEnchantments.values();
+        final List<Enchantment> enchantments = new ArrayList<>();
+        enchantments.addAll(customEnchantments.values());
+
+        return enchantments;
     }
 
     public Enchantment getCustomEnchantment(String nameKey) {
