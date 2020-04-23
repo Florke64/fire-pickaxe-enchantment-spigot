@@ -21,7 +21,7 @@ public class HotEdgeEnchantment extends Enchantment {
         this.nameKey = nameKey;
 
         conflictingEnchantments.add(Enchantment.SILK_TOUCH);
-//        conflictingEnchantments.add(Enchantment.LOOT_BONUS_BLOCKS);
+        conflictingEnchantments.add(Enchantment.LOOT_BONUS_BLOCKS);
     }
 
     /**
